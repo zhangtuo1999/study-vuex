@@ -12,4 +12,9 @@ export default new Vuex.Store({
             state.count += num
         }
     },
+    actions: {
+        handleAdd(context, num) {
+            context.commit('HANDLE_ADD', num)
+        }
+    }
 })
