@@ -20,12 +20,12 @@ export default {
     }
   },
   computed: {
-    ...mapState(['count']),
-    ...mapGetters(['bigCount', 'largeCount'])
+    ...mapState('countAbout', ['count']),
+    ...mapGetters('countAbout', ['bigCount', 'largeCount'])
   },
   methods: {
-    ...mapMutations({handleCommit: 'HANDLE_ADD'}),
-    ...mapActions({handleDispatch: 'handleAdd'}),
+    ...mapMutations('countAbout',{handleCommit:'HANDLE_ADD'}),
+    ...mapActions('countAbout',{handleDispatch:'handleAdd'}),
 
   }
 }
