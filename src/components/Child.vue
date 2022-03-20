@@ -1,12 +1,16 @@
 <template>
   <div>
     <h1>count:{{ count }}</h1>
-    <input v-model.number="num"> //每次加到count中的数
+    <h1>bigCount:{{ bigCount }}</h1>
+    <h1>largeCount:{{ largeCount }}</h1>
+    <input v-model.number="num">
     <button @click="handleClick">点击count++</button>
   </div>
 </template>
 
 <script>
+import {mapState, mapGetters} from 'vuex'
+
 export default {
   name: "Child",
   data() {
@@ -15,9 +19,8 @@ export default {
     }
   },
   computed: {
-    count() {
-      return this.$store.state.count
-    }
+    ...mapState(['count']),
+    ...mapGetters(['bigCount','largeCount'])
   },
   methods: {
     handleClick() {
