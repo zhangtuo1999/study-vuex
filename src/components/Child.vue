@@ -4,12 +4,13 @@
     <h1>bigCount:{{ bigCount }}</h1>
     <h1>largeCount:{{ largeCount }}</h1>
     <input v-model.number="num">
-    <button @click="handleClick">点击count++</button>
+    <button @click="handleCommit(num)">点击commit</button>
+    <button @click="handleDispatch(num)">点击dispatch</button>
   </div>
 </template>
 
 <script>
-import {mapState, mapGetters} from 'vuex'
+import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
 
 export default {
   name: "Child",
@@ -20,12 +21,12 @@ export default {
   },
   computed: {
     ...mapState(['count']),
-    ...mapGetters(['bigCount','largeCount'])
+    ...mapGetters(['bigCount', 'largeCount'])
   },
   methods: {
-    handleClick() {
-      this.$store.commit('HANDLE_ADD', this.num)
-    }
+    ...mapMutations({handleCommit: 'HANDLE_ADD'}),
+    ...mapActions({handleDispatch: 'handleAdd'}),
+
   }
 }
 </script>
